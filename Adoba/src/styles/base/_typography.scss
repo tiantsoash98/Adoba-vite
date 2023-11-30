@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+@font-face {
+    font-family:  'MyFont';
+    src: url(/fonts/SuisseIntl-Book.otf) format("otf"),
+        url(/fonts/SuisseIntl-Book.ttf) format("ttf");
+    font-weight: 350;
+    font-style: normal;
+}
+
+
+body {
+    @include p;
+}
+
+
+h1 {
+    @include h1
+}
+
+h2 {
+    @include h2
+}
+
+h3 {
+    @include h3
+}
+
+h4 {
+    @include h4
+}
+
+p {
+    @include p
+}
+
+.suisse-intl {
+    font-family: var(--font-family-secondary), 'Arial', sans-serif;
+    font-weight: 350;
+}
+
+.inter {
+    font-family: var(--font-family-secondary), 'Arial', sans-serif;
+    font-weight: 400;
+
+    &--medium {
+        font-weight: 500;
+    }
+    &--semi-bold{
+        font-weight: 600;
+    }
+}
