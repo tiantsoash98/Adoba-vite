@@ -8,6 +8,7 @@ html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-kerning: none;
+    position: relative;
 }
 
 ::selection{
@@ -16,7 +17,6 @@ html {
 }
 
 body {
-    position: relative;
     background-color: var(--background-color);
     color: var(--text-color);
 }

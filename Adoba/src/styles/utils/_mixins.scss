@@ -3,7 +3,7 @@
     font-family: var(--font-family-primary), 'Arial', serif;
     @include font-size(var(--title-1));
     letter-spacing: -1px;
-    line-height: 1.2;
+    line-height: 1;
     font-weight: 350;
 
     @include media(small){
@@ -13,15 +13,15 @@
 @mixin h2 {
     font-family: var(--font-family-primary), 'Arial', serif;
     @include font-size(var(--title-2));
-    letter-spacing: -1px;
+    letter-spacing:  -0.06vw;
     line-height: 1.2;
     font-weight: 350;
 }
 @mixin h3 {
     font-family: var(--font-family-primary), 'Arial', serif;
     @include font-size(var(--title-3));
-    letter-spacing: 0;
-    line-height: 1.1;
+    letter-spacing: -0.06vw;
+    line-height: 1.2;
     font-weight: 350;
 }
 @mixin h4 {
@@ -32,11 +32,27 @@
     font-weight: 350;
 }
 
+@mixin h5 {
+    font-family: var(--font-family-primary), 'Arial', serif;
+    @include font-size(var(--title-5));
+    letter-spacing: 0;
+    line-height: 1.4;
+    font-weight: 350;
+}
+
+@mixin h6 {
+    font-family: var(--font-family-primary), 'Arial', serif;
+    @include font-size(var(--title-6));
+    letter-spacing: -0.03vw;
+    line-height: 1.4;
+    font-weight: 350;
+}
+
 @mixin p {  
     font-family: var(--font-family-secondary), 'Arial', serif;
     @include font-size(var(--paragraph-text));
+    letter-spacing: -0.03vw;
     line-height: 1.5;
-    letter-spacing: normal;
     font-weight: 400;
 }
 
@@ -68,7 +84,7 @@
 
 // Mixin
 @mixin font-size($font-size, $min-size: $min-font-size){
-    font-size: max(responsive-size($font-size), $min-size);
+    font-size: max(calc( $font-size * var(--unit-fx)), $min-size); 
 }
 
 // For media max-width

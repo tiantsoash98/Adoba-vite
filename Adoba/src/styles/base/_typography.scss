@@ -1,37 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
 @font-face {
-    font-family:  'MyFont';
+    font-family:  "Suisse Int'l";
     src: url(/fonts/SuisseIntl-Book.otf) format("otf"),
         url(/fonts/SuisseIntl-Book.ttf) format("ttf");
     font-weight: 350;
     font-style: normal;
-}
-
-
-body {
-    @include p;
-}
-
-
-h1 {
-    @include h1
-}
-
-h2 {
-    @include h2
-}
-
-h3 {
-    @include h3
-}
-
-h4 {
-    @include h4
-}
-
-p {
-    @include p
 }
 
 .suisse-intl {
@@ -49,4 +23,78 @@ p {
     &--semi-bold{
         font-weight: 600;
     }
+}
+
+body {
+    @include p;
+}
+
+h1 {
+    @include h1
+}
+
+h2 {
+    @include h2
+}
+
+h3 {
+    @include h3
+}
+
+h4 {
+    @include h4
+}
+
+h5 {
+    @include h5
+}
+
+h6 {
+    @include h6
+}
+
+p {
+    @include p
+}
+
+.title-h1 {
+    @include h1;
+}
+.title-h2 {
+    @include h2;
+}
+
+.title-h3 {
+    @include h3;
+}
+
+.title-h4 {
+    @include h4;
+}
+
+.title-h5 {
+    @include h5;
+}
+
+.title-h6 {
+    @include h6;
+}
+
+.paragraph-text {
+    @include p;
+
+    &--medium {
+        font-weight: 500;
+    }
+    &--semi-bold{
+        font-weight: 600;
+    }
+}
+
+.callout-text {
+    @include callout-text;
+}
+
+.display-text {
+    @include display-text;
 }
