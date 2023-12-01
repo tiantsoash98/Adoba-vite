@@ -9,7 +9,7 @@ export default {
     },
     computed: {
         imgSrc() {
-            return `/${this.image.src}`
+            return `${this.image.src}`
         }
     }
 }

@@ -166,7 +166,7 @@ export default {
             width: 100%;
             height: 100%;
             background-color: var(--color-neutral-100);
-            opacity: 0.5;
+            opacity: 0.6;
             z-index: 1;
         }
         &__img-wrapper {
