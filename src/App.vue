@@ -23,30 +23,41 @@ export default {
         ImagesGrid,
         Advantage
     },
-    mounted() {
-        SplitType.create('.home-hero__title', {types: 'words', wordClass: "home-hero__title--word"});
-
-        gsap.timeline({
-            defaults: { duration: 1, ease: "power2.out" },
-        })
-        .from('.home-hero__title--word', {
-            opacity: 0,
-            yPercent: 100,
-            stagger: 0.05
-        })
-    },  
     setup() {
-        const isServiceActive = false, 
+        const isLoaded = ref(false),
+        isServiceActive = false, 
         isActiveIndex = ref(-1);
         provide('services', data.services)
         gsap.registerPlugin(ScrollTrigger)
     
         return {
+            isLoaded,
             isServiceActive,
             isActiveIndex
         }
     },
+    mounted() {
+        document.onreadystatechange = () => {
+            if(document.readyState == "complete"){
+                this.isLoaded = true;
+                this.animateHero()
+            } 
+        }
+    },  
     methods: {
+        animateHero(){
+            SplitType.create('.home-hero__title', {types: 'words', wordClass: "home-hero__title--word"});
+
+            gsap.timeline({
+                defaults: { duration: 1, ease: "power2.out" },
+            })
+            .from('.home-hero__title--word', {
+                opacity: 0,
+                yPercent: 100,
+                stagger: 0.05,
+                delay: 1
+            })
+        },
         // https://stackoverflow.com/questions/72018481/vue-js-add-a-class-when-an-item-is-clicked-and-remove-it-when-a-sibling-item-is
         toogleServiceActive(index){
             if(index == this.isActiveIndex){
@@ -91,7 +102,7 @@ export default {
 </script>
 
 <template>
-<PageLoader />
+<PageLoader :loaded="isLoaded"/>
   <main data-cursor="-exclusion">
     <Header/>
     <section class="section section--no-padding-top section--no-padding-bottom home-hero">
