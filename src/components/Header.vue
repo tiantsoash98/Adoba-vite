@@ -41,7 +41,7 @@ export default {
 <template>
     <header 
     :class="{
-        'header header--open': true, 
+        'header': true, 
         'header--exclusion': isBeyondFold, 
         'header--page-scrolling-down': isBeyondFold && !isScrollingDown,
         'header--hide': isBeyondFold && isScrollingDown
@@ -85,7 +85,8 @@ export default {
     mix-blend-mode: var(--header-blend-mode);
     color:  var(--header-color);
     padding-top: var(--r-space-md);
-    transition: padding .5s var(--alias-default-ease) .2s;
+    transition: padding .5s var(--alias-default-ease) .2s, 
+                opacity .5s var(--alias-default-ease) .2s;
 
     &--exclusion {
         --header-blend-mode: difference;

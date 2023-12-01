@@ -66,7 +66,7 @@ export default {
         height: 100dvh;
         width: 100%;
         background-color: var(--color-neutral-100);
-        opacity: 0.5;
+        opacity: 0;
     }
     &__main-wrapper {
         height: 100%;
@@ -79,6 +79,7 @@ export default {
         width: 100%;
         height: 100%;
         background-color: var(--brand-primary);
+        transform: scaleY(0);
     }
     &__content-wrapper {
         padding-top: var(--r-space-lg);
@@ -89,6 +90,7 @@ export default {
     }
     &__links-wrapper {
         grid-column: 5/span 4;
+        display: none;
 
         & li {
             margin-top: var(--r-space-sm);
@@ -96,11 +98,14 @@ export default {
     }
     &__img-content {
         grid-column: 9/-1;
+        display: none;
+        opacity: 0;
     }
     &__img-wrapper {
         width: 100%;
         height: 100%;
         overflow: hidden;
+        border-radius: 0.5rem;
     }
     &__img {
         position: absolute;
