@@ -1,5 +1,6 @@
 <script>
 import data from './data.json';
+import PageLoader from './components/PageLoader.vue'
 import Button from './components/Button.vue'
 import HomeService from './components/HomeService.vue'
 import ImagesGrid from './components/ImagesGrid.vue'
@@ -14,6 +15,7 @@ import SplitType from 'split-type';
 
 export default {
     components: {
+        PageLoader,
         Header,
         Footer,
         Button,
@@ -64,12 +66,12 @@ export default {
                     trigger: triggerEl,
                     //trigger element - viewport
                     start: "top bottom",
-                    end: "top center",
+                    end: "top top",
                     scrub: true
                 }
             })
             .to(targetEl, {
-                yPercent: 10,
+                yPercent: 25,
                 ease: "none"
             })
         }
@@ -89,6 +91,7 @@ export default {
 </script>
 
 <template>
+<PageLoader />
   <main data-cursor="-exclusion">
     <Header/>
     <section class="section section--no-padding-top section--no-padding-bottom home-hero">

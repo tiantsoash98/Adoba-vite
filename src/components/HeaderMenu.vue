@@ -1,6 +1,6 @@
 <script>
 import gsap from 'gsap';
-import { ref, inject } from 'vue';
+import { inject } from 'vue';
 
 export default {
     setup() {
