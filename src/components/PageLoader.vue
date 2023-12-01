@@ -14,7 +14,7 @@ export default {
         document.onreadystatechange = () => {
             if(document.readyState == "complete"){
                 this.animateLoaderOut().then(() => {
-                    this.isLoaded = false
+                    this.isLoaded = true
                 })
             } 
         }
