@@ -60,7 +60,6 @@ export default {
                 height: var(--service-img-height);
             }
         }
-
         &__border {
             width: 100%;
             height: 1px;

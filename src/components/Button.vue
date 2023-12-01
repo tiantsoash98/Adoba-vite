@@ -11,7 +11,7 @@ export default {
 <template>
   <button class="button">
     <div class="button__frame"></div>
-    <span>{{ text }}</span>
+    <span class="button__label">{{ text }}</span>
     <div class="button__icon-wrapper">
         <svg class="button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.41 14.83">
             <polygon points="11 14.83 9.59 13.41 14.59 8.41 0 8.41 0 6.41 14.59 6.41 9.59 1.41 11 0 18.41 7.41 11 14.83"/>
@@ -39,7 +39,14 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    transition: color 0.3s var(--alias-default-ease);
+    cursor: pointer; 
 
+    &:hover {
+        #{$root}__icon-wrapper {
+            transform: translateX(0.3vw);
+        }
+    }
 
     &--primary {
         background-color: var(--brand-primary);
@@ -66,12 +73,14 @@ export default {
         background-color: var(--brand-secondary);
         transform: scaleY(0);
         transform-origin: top;
+        transition: transform 0.8s var(--alias-default-ease); 
     }
     &__icon-wrapper {
         margin-left: var(--r-space-xs);
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: transform 0.5s var(--alias-default-ease); 
     }
     &__icon {
         transform: translateY(50%);

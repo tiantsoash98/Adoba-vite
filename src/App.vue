@@ -74,7 +74,12 @@ export default {
                 </div>
             </div>
             <div class="home-hero__scroll-wrapper">
-                <span>Scroll</span>
+                <div class="home-hero__label-wrapper">Scroll</div>
+                <div class="home-hero__icon-wrapper">
+                    <svg class="home-hero__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.4 17.2">
+                        <polygon points="6.7 17.2 0 10.5 .7 9.8 6.2 15.3 6.2 0 7.2 0 7.2 15.3 12.7 9.8 13.4 10.5 6.7 17.2"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
@@ -202,7 +207,24 @@ export default {
             position: absolute;
             left: var(--r-grid-x-margin);
             bottom: var(--r-space-sm);
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
             color: var(--brand-primary);
+        }
+        &__icon-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: var(--r-space-xs);
+            margin-left: var(--r-space-xs);
+            transition: transform 1s var(--alias-default-ease) .1s; 
+        }
+        &__icon{
+            width: 100%;
+            fill: currentColor;
         }
     }
     &-presentation {
