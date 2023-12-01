@@ -106,6 +106,7 @@
 
 <style scoped lang="scss">
 .pre-footer {
+    $root: &;
     padding-top: var(--r-space-lg);
     padding-bottom: var(--r-space-lg);
 
@@ -114,6 +115,12 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
+
+        &:hover {
+            #{$root}__icon {
+                transform: translate(1vw, -1vw);
+            }
+        }
     }
     &__title-wrapper {
         padding-top: var(--r-space-xs);
@@ -128,6 +135,7 @@
     &__icon {
         width: 100%;
         fill: currentColor;
+        transition: transform .8s var(--alias-default-ease); 
     }
 }
 .footer {

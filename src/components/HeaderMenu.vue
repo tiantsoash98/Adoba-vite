@@ -56,9 +56,9 @@ export default {
                         ease: "power2.inOut"
                     },
                 })
-                .to('.menu__label', { yPercent: 100, opacity: 0, stagger: 0.15 })
+                .to('.menu__label', { yPercent: 100, opacity: 0, stagger: {each: 0.08, from: "end",}, duration: 0.5 })
                 .to('.menu__img-content', { opacity: 0}, '<')
-                .to('.menu__frame', { scaleY: 0 }, '<')
+                .to('.menu__frame', { scaleY: 0 }, '-=0.8s')
                 .to('.header', { '--header-color': 'var(--brand-primary)' }, '<')
                 .to('.menu__backdrop', { opacity: 0, pointerEvents: 'none' }, '<')
                 .set('.menu__links-wrapper', { opacity: 0, display: 'none' })
