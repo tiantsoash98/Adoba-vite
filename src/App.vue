@@ -109,7 +109,20 @@ export default {
         <div class="home-hero__wrapper">
             <div class="home-hero__img-wrapper">
                 <div class="home-hero__overlay"></div>
-                <img class="home-hero__img" src="/header.webp" alt="Adoba Hero img">
+                <img
+                    class="home-hero__img"
+                    sizes="(max-width: 2860px) 100vw, 2860px"
+                    srcset="
+                        /header_e29ts9_c_scale_w_280.webp 280w,
+                        /header_e29ts9_c_scale_w_978.webp 978w,
+                        /header_e29ts9_c_scale_w_1380.webp 1380w,
+                        /header_e29ts9_c_scale_w_1667.webp 1667w,
+                        /header_e29ts9_c_scale_w_1967.webp 1967w,
+                        /header_e29ts9_c_scale_w_2252.webp 2252w,
+                        /header_e29ts9_c_scale_w_2569.webp 2569w,
+                        /header_e29ts9_c_scale_w_2860.webp 2860w"
+                    src="/header_e29ts9_c_scale_w_2860.webp"
+                    alt="Adoba Hero img">
             </div>
             <div class="container home-hero__content-wrapper">
                 <div class="home-hero__title-wrapper">
@@ -280,7 +293,17 @@ export default {
         &__icon{
             width: 100%;
             fill: currentColor;
+            animation: bounce 2s linear infinite 2s;
         }
+
+        @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(0.3vw);
+        }
+    }
     }
     &-presentation {
         &__content-wrapper {
