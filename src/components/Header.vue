@@ -1,14 +1,20 @@
 <script>
-import { ref } from 'vue';
+import HeaderMenu from './HeaderMenu.vue'
+import { ref, inject } from 'vue';
 
 export default {
+    components: {
+        HeaderMenu,
+    },
     setup() {
+        const services = inject('services')
         const isBeyondFold = ref(false);
         const isScrollingDown = ref(false);
         const startHidePosition = ref(0);
         const currentScrollPosition = ref(0);
 
         return {
+            services,
             isBeyondFold,
             isScrollingDown,
             startHidePosition,
@@ -35,7 +41,7 @@ export default {
 <template>
     <header 
     :class="{
-        'header': true, 
+        'header header--open': true, 
         'header--exclusion': isBeyondFold, 
         'header--page-scrolling-down': isBeyondFold && !isScrollingDown,
         'header--hide': isBeyondFold && isScrollingDown
@@ -63,24 +69,29 @@ export default {
             </div>
         </div>
     </header>
+    <HeaderMenu></HeaderMenu>
 </template>
 
 <style scoped lang="scss">
 .header {
-    $root:&;
     --header-blend-mode: normal;
+    --header-color: var(--brand-primary);
+    $root:&;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: var( --z-index-nav);
     mix-blend-mode: var(--header-blend-mode);
-    color: var(--brand-primary);
+    color:  var(--header-color);
     padding-top: var(--r-space-md);
-    transition: all .5s var(--alias-default-ease) .2s;
+    transition: padding .5s var(--alias-default-ease) .2s;
 
     &--exclusion {
         --header-blend-mode: difference;
+    }
+    &--open {
+        --header-color: var(--brand-secondary);
     }
     &--page-scrolling-down {
         padding-top: var(--r-space-sm);
@@ -90,7 +101,7 @@ export default {
     }
 
     & a {
-        color: var(--brand-primary);
+        color: var(--header-color);
     }
     &__main-wrapper {
         padding-bottom: var(--r-space-sm);
@@ -118,5 +129,6 @@ export default {
         align-items: flex-end;
     }
 }
+
 
 </style>

@@ -6,6 +6,7 @@ import ImagesGrid from './components/ImagesGrid.vue'
 import Advantage from './components/Advantage.vue'
 import Footer from './components/Footer.vue'
 import Header from './components/Header.vue'
+import { provide } from 'vue'
 import { ref } from 'vue';
 
 export default {
@@ -20,6 +21,7 @@ export default {
     setup() {
         const isServiceActive = false, 
         isActiveIndex = ref(-1);
+        provide('services', data.services)
 
         return {
             isServiceActive,
@@ -53,7 +55,7 @@ export default {
 
 <template>
   <main data-cursor="-exclusion">
-    <Header />
+    <Header/>
     <section class="section section--no-padding-top section--no-padding-bottom home-hero">
         <div class="home-hero__wrapper">
             <div class="home-hero__img-wrapper">
