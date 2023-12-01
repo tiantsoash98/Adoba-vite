@@ -42,10 +42,8 @@ function initCursor(){
         skewingText: 0,
     });
 
-    const el = document.querySelectorAll('img');
 
-    
-    document.querySelectorAll('img').forEach(item => {
+    document.querySelectorAll('[data-cursor="-neutral"]').forEach(item => {
         item.addEventListener('mouseenter', () => {
             cursor.removeState('-exclusion');
         });

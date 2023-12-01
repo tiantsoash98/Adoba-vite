@@ -37,7 +37,7 @@ export default {
             </div>
         </div>
         <div class="service__img-container">
-            <div class="service__img-wrapper" data-cursor-text="Voir">
+            <div class="service__img-wrapper" data-cursor-text="Voir" data-cursor="-neutral">
                 <img :src="img" :alt="title" class="service__img" loading="lazy">
             </div>
         </div>

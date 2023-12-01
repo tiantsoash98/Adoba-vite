@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <div class="image">
+    <div class="image" data-cursor-text="Voir">
         <div class="image__img-wrapper">
             <img :src="imgSrc" :alt="image.alt" class="image__img" loading="lazy">
         </div>

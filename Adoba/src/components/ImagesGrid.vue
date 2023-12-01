@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-    <div class="image-grid__list-wrapper">
+    <div class="image-grid__list-wrapper" data-cursor="-neutral">
         <Image v-for="(image, index) in list" 
             :key="index"
             :image="image"

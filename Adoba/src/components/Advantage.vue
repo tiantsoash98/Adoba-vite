@@ -52,7 +52,7 @@ export default {
         }
         &__content-wrapper {
             display: grid;
-            grid-template-columns: calc(1 * var(--r-base-unit)) 1fr;
+            grid-template-columns: var(--r-base-unit) 1fr;
             column-gap: var(--r-space-sm);
         }
         &__icon-wrapper {

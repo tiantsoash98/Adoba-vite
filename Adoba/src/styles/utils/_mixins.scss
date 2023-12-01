@@ -2,7 +2,7 @@
 @mixin h1 {
     font-family: var(--font-family-primary), 'Arial', serif;
     @include font-size(var(--title-1));
-    letter-spacing: -0.08vw;
+    letter-spacing: -0.12vw;
     line-height: 1.1;
     font-weight: 350;
 
@@ -64,6 +64,15 @@
     font-weight: 400;
 }
 
+@mixin footnote-text {
+    font-family: var(--font-family-secondary), 'Arial', serif;
+    @include font-size(var(--footnote-text), 0.75rem);
+    line-height: 1.4;
+    letter-spacing: normal;
+    font-weight: 400;
+}
+
+
 @mixin display-text {
     font-family: var(--font-family-secondary), 'Arial', serif;
     @include font-size(var(--display-text));
@@ -71,15 +80,6 @@
     letter-spacing: -0.2vw;
     font-weight: 500;
 }
-
-@mixin super-large-text {
-    font-family: var(--font-family-secondary), 'Arial', serif;
-    @include font-size(var(--super-large-text));
-    line-height: 1;
-    letter-spacing: -0.2vw;
-    font-weight: 500;
-}
-
 
 
 // Mixin

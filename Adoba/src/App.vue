@@ -4,6 +4,7 @@ import Button from './components/Button.vue'
 import HomeService from './components/HomeService.vue'
 import ImagesGrid from './components/ImagesGrid.vue'
 import Advantage from './components/Advantage.vue'
+import Footer from './components/Footer.vue'
 import { ref } from 'vue';
 
 export default {
@@ -11,7 +12,8 @@ export default {
         Button,
         HomeService,
         ImagesGrid,
-        Advantage
+        Advantage,
+        Footer
     },
     setup() {
         const isServiceActive = false, 
@@ -140,6 +142,7 @@ export default {
             </ul>
         </div>
     </section>
+    <Footer/>
   </main>
 </template>
 
@@ -249,10 +252,11 @@ export default {
 
         &__list-wrapper {
             margin-top: var(--r-space-md);
+            padding-bottom: var(--r-space-md);
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             column-gap: var(--r-space-md);
-            row-gap: var(--r-space-lg);
+            row-gap: var(--r-space-md);
         }
     }
 }
