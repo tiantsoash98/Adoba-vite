@@ -178,7 +178,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        margin-top: var(--r-space-lg);
+        margin-top: var(--r-space-md);
         padding-bottom: var(--r-space-sm);
     }
     &__launched-wrapper {
