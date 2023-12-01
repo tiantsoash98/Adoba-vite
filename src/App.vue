@@ -8,6 +8,9 @@ import Footer from './components/Footer.vue'
 import Header from './components/Header.vue'
 import { provide } from 'vue'
 import { ref } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 
 export default {
     components: {
@@ -18,11 +21,24 @@ export default {
         ImagesGrid,
         Advantage
     },
+    mounted() {
+        SplitType.create('.home-hero__title', {types: 'words', wordClass: "home-hero__title--word"});
+
+        gsap.timeline({
+            defaults: { duration: 1, ease: "power2.out" },
+        })
+        .from('.home-hero__title--word', {
+            opacity: 0,
+            yPercent: 100,
+            stagger: 0.05
+        })
+    },  
     setup() {
         const isServiceActive = false, 
         isActiveIndex = ref(-1);
         provide('services', data.services)
-
+        gsap.registerPlugin(ScrollTrigger)
+    
         return {
             isServiceActive,
             isActiveIndex
@@ -38,6 +54,25 @@ export default {
                 this.isActiveIndex = index;
             }
         },
+        presentationScroll(el){
+            let triggerEl = el;
+            let targetEl = '.home-hero__img';
+
+            gsap.timeline({
+                defaults: { duration: 1 },
+                scrollTrigger: {
+                    trigger: triggerEl,
+                    //trigger element - viewport
+                    start: "top bottom",
+                    end: "top center",
+                    scrub: true
+                }
+            })
+            .to(targetEl, {
+                yPercent: 10,
+                ease: "none"
+            })
+        }
     },
     computed: {
         services() {
@@ -83,19 +118,22 @@ export default {
             </div>
         </div>
     </section>
-    <section class="section home-presentation">
-        <div class="container">
-            <div class="home-presentation__content-wrapper">
-                <div class="home-presentation__title-wrapper">
-                    <h2 class="text-visually-hidden">Adoba a pour ambition de proposer des solutions immersives visuelles, digitales innovantes dans l’univers de l’architecture, l’immobilier et la construction.</h2>
-                    <div class="home-presentation__title title-h3">Adoba a pour ambition de proposer des solutions immersives visuelles, digitales innovantes dans l’univers de l’architecture, l’immobilier et la construction.</div>
-                </div>
-                <div class="home-presentation__button-wrapper">
-                    <Button text="Contactez-nous"></Button>
+    <transition appear @enter="presentationScroll">
+        <section class="section home-presentation">
+            <div class="container">
+                <div class="home-presentation__content-wrapper">
+                    <div class="home-presentation__title-wrapper">
+                        <h2 class="text-visually-hidden">Adoba a pour ambition de proposer des solutions immersives visuelles, digitales innovantes dans l’univers de l’architecture, l’immobilier et la construction.</h2>
+                        <div class="home-presentation__title title-h3">Adoba a pour ambition de proposer des solutions immersives visuelles, digitales innovantes dans l’univers de l’architecture, l’immobilier et la construction.</div>
+                    </div>
+                    <div class="home-presentation__button-wrapper">
+                        <Button text="Contactez-nous"></Button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </transition>
+    
     <section class="section home-services">
         <div class="container">
             <div class="home-services__label-wrapper">
@@ -202,6 +240,9 @@ export default {
             color: var(--brand-primary);
             padding-top: var(--r-space-lg);
             padding-bottom: var(--r-space-lg);
+        }
+        &__title {
+            overflow: hidden;
         }
         &__scroll-wrapper {
             position: absolute;
