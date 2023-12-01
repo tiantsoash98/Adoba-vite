@@ -30,5 +30,61 @@
             "description": "Séduisez vos leads en présentant votre programme immobilier via la maquette 3D.",
             "img": "service-maquette orbitale.webp"
         }
+    ],
+    "advantages": [
+        {
+            "title": "Solutions sur mesure",
+            "description": "Votre besoin et vos goûts sont unique, notre studio vous fourni une offre hyper personnalisée adaptée à vos attentes.",
+            "icon": "icon-solution"
+        },
+        {
+            "title": "Les clients d’abord",
+            "description": "Nous donnons vie et mettons en lumière les projets de chacun nos clients, nous sommes à l’écoute et nous donnons le meilleur de nous-même sur chaque réalisation.",
+            "icon": "icon-clients-first"
+        },
+        {
+            "title": "Qualité premium",
+            "description": "Notre définition de la qualité premium c’est un savoir-faire au service d’expériences visuelles, immersives personnalisées.",
+            "icon": "icon-quality"
+        },
+        {
+            "title": "Délais respectés",
+            "description": "Nous nous engageons à respecter délais de livraisons convenus ! Si nous ne respectons pas cet engagement, nous vous offrons la prestation.",
+            "icon": "icon-time"
+        }
+    ],
+    "works" : [
+        {
+            "title": "Habitation durable",
+            "src": "Réalisation.webp",
+            "alt": "Habitation durable",
+            "featured": true,
+            "column": 2,
+            "row": 1
+        },
+        {
+            "title": "Chambre à coucher",
+            "src": "réalisation01.webp",
+            "alt": "Chambre à coucher",
+            "featured": true,
+            "column": 1,
+            "row": 1
+        },
+        {
+            "title": "Living Room",
+            "src": "perspective 3D intérieur.webp",
+            "alt": "Living Room",
+            "featured": true,
+            "column": 1,
+            "row": 1
+        },
+        {
+            "title": "Lotissement eco-responsable",
+            "src": "réalisation03.webp",
+            "alt": "Lotissement eco-responsable",
+            "featured": true,
+            "column": 2,
+            "row": 1
+        }
     ]
 }

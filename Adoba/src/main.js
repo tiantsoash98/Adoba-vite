@@ -30,9 +30,9 @@ function initScroll(){
     }
   
     requestAnimationFrame(raf)
-  }
+}
   
-  function initCursor(){
+function initCursor(){
     MouseFollower.registerGSAP(gsap);
     
     const cursor = new MouseFollower({

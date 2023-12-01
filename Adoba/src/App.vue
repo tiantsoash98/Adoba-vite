@@ -2,12 +2,16 @@
 import data from './data.json';
 import Button from './components/Button.vue'
 import HomeService from './components/HomeService.vue'
+import ImagesGrid from './components/ImagesGrid.vue'
+import Advantage from './components/Advantage.vue'
 import { ref } from 'vue';
 
 export default {
     components: {
         Button,
-        HomeService
+        HomeService,
+        ImagesGrid,
+        Advantage
     },
     setup() {
         const isServiceActive = false, 
@@ -32,6 +36,12 @@ export default {
     computed: {
         services() {
             return data.services;
+        },
+        featuredWorks() {
+            return data.works.filter(work => work.featured == true);
+        },
+        advantages() {
+            return data.advantages
         }
     }
 }
@@ -95,7 +105,41 @@ export default {
             </div>
         </div>
     </section>
-
+    <section class="section home-works">
+        <div class="container">
+            <div class="home-works__content-wrapper">
+                <div class="home-works__title-wrapper">
+                    <h2 class="text-visually-hidden">Nos réalisations</h2>
+                    <div class="home-works__title title-h2">Nos réalisations</div>
+                </div>
+                <div class="home-works__text-wrapper">
+                    <p>Une séléction de nos réalisations pour vous faire découvrir le savoir-faire et la créativité de notre équipe qui execute chaque projet avec passion et minutie et vous familiariser avec les types de travaux que nous pourrons exécuter pour vous.</p>
+                </div>
+            </div>
+            <ImagesGrid :list="featuredWorks" class="home-works__grid"></ImagesGrid>
+            <div class="home-works__button-wrapper">
+                <Button text="Voir toutes nos réalisations"></Button>
+            </div>
+        </div>
+    </section>
+    <section class="section home-advantages">
+        <div class="container">
+            <div class="home-advantages__title-wrapper">
+                <h2 class="text-visually-hidden">Ce qui nous rend différent</h2>
+                <div class="home-advantages__title title-h1">Ce qui nous</div>
+                <div class="home-advantages__title title-h1">rend différent</div>
+            </div>
+            <ul class="home-advantages__list-wrapper">
+                <li v-for="(advantage, index) in advantages" :key="advantage.title + index">
+                    <Advantage
+                        :title="advantage.title"
+                        :description="advantage.description"
+                        :icon="advantage.icon"
+                    ></Advantage>
+                </li>
+            </ul>
+        </div>
+    </section>
   </main>
 </template>
 
@@ -176,6 +220,39 @@ export default {
         &__label-wrapper {
             color: var(--color-neutral-40);
             margin-bottom: var(--r-space-md);
+        }
+    }
+    &-works {
+        &__content-wrapper {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            column-gap: var(--r-space-sm);
+        }
+        &__title-wrapper {
+            grid-column: span 7;
+        }
+        &__text-wrapper {
+            grid-column: span 5;
+        }
+        &__grid {
+            margin-top: var(--r-space-lg);
+        }
+        &__button-wrapper {
+            margin-top: var(--r-space-md);
+            display: flex;
+            justify-content: center;
+        }
+    }
+    &-advantages {
+        background-color: var(--color-neutral-80);
+        color: var(--color-neutral-0);
+
+        &__list-wrapper {
+            margin-top: var(--r-space-md);
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: var(--r-space-md);
+            row-gap: var(--r-space-lg);
         }
     }
 }

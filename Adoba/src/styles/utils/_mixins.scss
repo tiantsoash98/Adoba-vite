@@ -2,8 +2,8 @@
 @mixin h1 {
     font-family: var(--font-family-primary), 'Arial', serif;
     @include font-size(var(--title-1));
-    letter-spacing: -1px;
-    line-height: 1;
+    letter-spacing: -0.08vw;
+    line-height: 1.1;
     font-weight: 350;
 
     @include media(small){

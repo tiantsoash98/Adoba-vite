@@ -38,7 +38,7 @@ export default {
         </div>
         <div class="service__img-container">
             <div class="service__img-wrapper" data-cursor-text="Voir">
-                <img :src="img" :alt="title" class="service__img">
+                <img :src="img" :alt="title" class="service__img" loading="lazy">
             </div>
         </div>
     </div>
@@ -46,6 +46,7 @@ export default {
 
 <style scoped lang="scss">
     .service {
+        --service-img-height: 70vh;
         $root:&;
         overflow: hidden;
 
@@ -56,7 +57,7 @@ export default {
         }
         &--active {
             #{$root}__img-container  {
-                height: 60vh;
+                height: var(--service-img-height);
             }
         }
 
@@ -99,7 +100,7 @@ export default {
         }
         &__img-wrapper {
             width: 100%;
-            height: 60vh;
+            height: var(--service-img-height);
             overflow: hidden;
             border-radius: 1rem;
             padding-bottom: var(--r-space-md);
