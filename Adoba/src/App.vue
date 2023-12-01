@@ -5,15 +5,17 @@ import HomeService from './components/HomeService.vue'
 import ImagesGrid from './components/ImagesGrid.vue'
 import Advantage from './components/Advantage.vue'
 import Footer from './components/Footer.vue'
+import Header from './components/Header.vue'
 import { ref } from 'vue';
 
 export default {
     components: {
+        Header,
+        Footer,
         Button,
         HomeService,
         ImagesGrid,
-        Advantage,
-        Footer
+        Advantage
     },
     setup() {
         const isServiceActive = false, 
@@ -51,6 +53,7 @@ export default {
 
 <template>
   <main data-cursor="-exclusion">
+    <Header />
     <section class="section section--no-padding-top section--no-padding-bottom home-hero">
         <div class="home-hero__wrapper">
             <div class="home-hero__img-wrapper">

@@ -33,7 +33,7 @@
                         <div class="footer__email-wrapper">
                             <span class="title-h6">hello@adoba.com</span>
                         </div>
-                        <div class="footer__description footnote-text">Adoba, studio en visualisation 3D architecture</div>
+                        <div class="footer__description callout-text">Adoba, studio en visualisation 3D architecture</div>
                     </div>
                 </div>
                 <div class="footer__section">
