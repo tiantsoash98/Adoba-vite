@@ -56,7 +56,7 @@
     "works" : [
         {
             "title": "Habitation durable",
-            "src": "Réalisation.webp",
+            "src": "img-1.webp",
             "alt": "Habitation durable",
             "featured": true,
             "column": 2,
@@ -64,7 +64,7 @@
         },
         {
             "title": "Chambre à coucher",
-            "src": "réalisation01.webp",
+            "src": "img-3.webp",
             "alt": "Chambre à coucher",
             "featured": true,
             "column": 1,
@@ -72,7 +72,7 @@
         },
         {
             "title": "Living Room",
-            "src": "perspective 3D intérieur.webp",
+            "src": "img-2.webp",
             "alt": "Living Room",
             "featured": true,
             "column": 1,
@@ -80,7 +80,7 @@
         },
         {
             "title": "Lotissement eco-responsable",
-            "src": "réalisation03.webp",
+            "src": "img-4.webp",
             "alt": "Lotissement eco-responsable",
             "featured": true,
             "column": 2,
