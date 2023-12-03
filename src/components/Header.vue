@@ -6,21 +6,15 @@ export default {
     components: {
         HeaderMenu,
     },
-    setup() {
-        const services = inject('services')
-        const isBeyondFold = ref(false);
-        const isScrollingDown = ref(false);
-        const startHidePosition = ref(0);
-        const currentScrollPosition = ref(0);
-        const isServicesDropdownOpen = ref(false);
-
+    data() {
         return {
-            services,
-            isBeyondFold,
-            isScrollingDown,
-            startHidePosition,
-            currentScrollPosition,
-            isServicesDropdownOpen
+            services: inject('services'),
+            isBeyondFold: ref(false),
+            isScrollingDown: ref(false),
+            startHidePosition: ref(0),
+            currentScrollPosition: ref(0),
+            headerState: ref("open"),
+            isClickable: ref(true)
         }
     },
     mounted() {
@@ -37,7 +31,36 @@ export default {
             this.currentScrollPosition = window.scrollY;
         },
         toogleServicesDropdown(){
-            this.isServicesDropdownOpen = !this.isServicesDropdownOpen;
+            if(this.isClickable && this.headerState == "open"){
+                this.openHeader()
+            }
+            else if(this.isClickable && this.headerState == "close"){
+                this.closeHeader()
+            }
+        },
+        openHeader(){
+            this.isClickable = false;
+            this.headerState = "opening";
+        },
+        closeHeader(){
+            this.isClickable = false;
+            this.headerState = "closing";
+        },
+        dropdownOpenAnimationComplete(){
+            this.isClickable = true;
+            this.headerState = "close";
+        },
+        dropdownCloseAnimationComplete(){
+            this.isClickable = true;
+            this.headerState = "open";
+        }
+    },
+    computed: {
+        isServicesDropdownOpen() {
+            return this.headerState == 'close';
+        },
+        isServicesDropdownClose() {
+            return this.headerState == 'open';
         }
     }
 }
@@ -50,7 +73,8 @@ export default {
         'header--exclusion': isBeyondFold, 
         'header--page-scrolling-down': isBeyondFold && !isScrollingDown,
         'header--hide': isBeyondFold && isScrollingDown,
-        'header--open': isServicesDropdownOpen
+        'header--open': isServicesDropdownOpen,
+        'header--close': isServicesDropdownClose
         }"
     >
         <div class="container">
@@ -62,7 +86,12 @@ export default {
                 </div>
                 <nav class="header__large">
                     <ul class="header__links callout-text">
-                        <li @click="toogleServicesDropdown" :class="{'header__link header__link--services': true, 'header__link--open': isServicesDropdownOpen}">
+                        <li 
+                        @click="toogleServicesDropdown" 
+                        :class="{
+                            'header__link header__link--services': true, 
+                            'header__link--open': isServicesDropdownOpen,
+                        }">
                             <div class="header__label-wrapper">Services</div>
                             <div class="header__icon-wrapper">
                                <svg class="header__dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.7 7.1">
@@ -81,7 +110,12 @@ export default {
             </div>
         </div>
     </header>
-    <HeaderMenu :isOpen="isServicesDropdownOpen"></HeaderMenu>
+    <HeaderMenu 
+        :headerState="headerState" 
+        @backdrop-click="closeHeader" 
+        @animation-open-complete="dropdownOpenAnimationComplete"
+        @animation-close-complete="dropdownCloseAnimationComplete">
+    </HeaderMenu>
 </template>
 
 <style scoped lang="scss">

@@ -1,24 +1,44 @@
 <script>
 import gsap from 'gsap';
-import { inject } from 'vue';
+import { ref, inject } from 'vue';
 
 export default {
-    setup() {
+    data() {
+        return {
+            isOpen: ref(false)
+        }
+    },
+    setup(props, context) {
         const services = inject('services')
+        
+        const closeHeaderMenu = () => {
+            context.emit('backdropClick')
+        }
+        const animationOpenComplete = () => {
+            console.log("Animation open complete")
+            context.emit('animationOpenComplete')
+        }
+        const animationCloseComplete = () => {
+            console.log("Animation close complete")
+            context.emit('animationCloseComplete')
+        }
 
         return {
-            services
+            services,
+            closeHeaderMenu,
+            animationOpenComplete,
+            animationCloseComplete
         }
     },
     props: {
-        isOpen: Boolean
+        headerState: String
     },
     watch: {
-        isOpen: function(newState){
-            if(newState == true){
+        headerState: function(newVal){
+            if(newVal == "opening"){
                 this.openServices();
             }
-            else {
+            else if(newVal == "closing") {
                 this.closeServices();
             }
         }
@@ -27,7 +47,11 @@ export default {
         async openServices(){
             return new Promise((resolve) => {
                 gsap.timeline({
-                    onComplete: resolve(),
+                    onComplete: () => {
+                        this.isOpen = true
+                        this.animationOpenComplete()
+                        resolve()
+                    },
                     defaults: {
                         duration: 1,
                         ease: "power2.inOut"
@@ -43,14 +67,17 @@ export default {
                 .to('.header', { '--header-color': 'var(--brand-secondary)' }, '<')
                 .to('.menu__links-wrapper', { opacity: 1 }, '<+0.3s')
                 .to('.menu__label', { yPercent: 0, opacity: 1, stagger: 0.15 }, 0)
-                .to('.menu__img-content', { opacity: 1 })
 
             })
         },
         async closeServices(){
             return new Promise((resolve) => {
                 gsap.timeline({
-                    onComplete: resolve(),
+                    onComplete: () => {
+                        this.isOpen = false
+                        this.animationCloseComplete()
+                        resolve()
+                    },
                     defaults: {
                         duration: 1,
                         ease: "power2.inOut"
@@ -72,7 +99,7 @@ export default {
     
 <template>
     <aside :class="{'menu': true, 'menu--open': isOpen }" aria-expanded="false">
-        <div class="menu__backdrop"></div>
+        <div class="menu__backdrop" @click="closeHeaderMenu"></div>
         <div class="menu__main-wrapper">
             <div class="menu__frame"></div>
             <div class="container menu__content-wrapper">
@@ -108,9 +135,6 @@ export default {
     z-index: calc(var( --z-index-nav) - 1);
     display: none;
 
-    &--open {
-        display: block;
-    }
     &__backdrop {
         position: fixed;
         top: 0;
