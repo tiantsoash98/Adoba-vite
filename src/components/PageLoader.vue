@@ -3,11 +3,9 @@ import { ref } from 'vue'
 import gsap from 'gsap'
 
 export default {
-    setup() {
-        const isVisible = ref(true)
-
-        return  {
-            isVisible
+    data() {
+        return {
+            isVisible: ref(true)
         }
     },
     props: {

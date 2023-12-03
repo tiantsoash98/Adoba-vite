@@ -18,7 +18,7 @@ export default {
 <template>
     <div class="image" data-cursor-text="Voir">
         <div class="image__img-wrapper">
-            <img :src="imgSrc" :alt="image.alt" class="image__img" loading="lazy">
+            <img :src="imgSrc" :alt="image.alt" class="image__img" loading="eager">
         </div>
     </div>
 </template>
