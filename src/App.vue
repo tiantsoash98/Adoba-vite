@@ -85,6 +85,24 @@ export default {
                 yPercent: 25,
                 ease: "none"
             })
+        },
+        advantagesScroll(el){
+            let triggerEl = el;
+            let targetEl = '.advantage__border';
+
+            gsap.timeline({
+                defaults: { duration: 1.5, ease: "power2.out" },
+                scrollTrigger: {
+                    trigger: triggerEl,
+                    //trigger element - viewport
+                    start: "top center",
+                    end: "top top"
+                }
+            })
+            .from(targetEl, {
+                scaleX: 0,
+                stagger: 0.3
+            })
         }
     },
     computed: {
@@ -146,19 +164,19 @@ export default {
         </div>
     </section>
     <transition appear @enter="presentationScroll">
-        <section class="section home-presentation">
-            <div class="container">
-                <div class="home-presentation__content-wrapper">
-                    <div class="home-presentation__title-wrapper">
-                        <h2 class="text-visually-hidden">Adoba a pour ambition de proposer des solutions immersives visuelles, digitales innovantes dans l’univers de l’architecture, l’immobilier et la construction.</h2>
-                        <div class="home-presentation__title title-h3">Adoba a pour ambition de proposer des solutions immersives visuelles, digitales innovantes dans l’univers de l’architecture, l’immobilier et la construction.</div>
-                    </div>
-                    <div class="home-presentation__button-wrapper">
-                        <Button text="Contactez-nous"></Button>
-                    </div>
+    <section class="section home-presentation">
+        <div class="container">
+            <div class="home-presentation__content-wrapper">
+                <div class="home-presentation__title-wrapper">
+                    <h2 class="text-visually-hidden">Adoba a pour ambition de proposer des solutions immersives visuelles, digitales innovantes dans l’univers de l’architecture, l’immobilier et la construction.</h2>
+                    <div class="home-presentation__title title-h3">Adoba a pour ambition de proposer des solutions immersives visuelles, digitales innovantes dans l’univers de l’architecture, l’immobilier et la construction.</div>
+                </div>
+                <div class="home-presentation__button-wrapper">
+                    <Button text="Contactez-nous"></Button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     </transition>
     
     <section class="section home-services">
@@ -199,6 +217,7 @@ export default {
             </div>
         </div>
     </section>
+    <transition appear @enter="advantagesScroll">
     <section class="section home-advantages">
         <div class="container">
             <div class="home-advantages__title-wrapper">
@@ -217,6 +236,7 @@ export default {
             </ul>
         </div>
     </section>
+    </transition>
     <Footer/>
   </main>
 </template>

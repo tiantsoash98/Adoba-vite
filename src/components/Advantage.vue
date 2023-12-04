@@ -47,8 +47,9 @@ export default {
         &__border {
             width: 100%;
             height: 1px;
-            background-color: var(--color-neutral-70);
+            background-color: var(--color-neutral-60);
             margin-bottom: var(--r-space-md);
+            transform-origin: left;
         }
         &__content-wrapper {
             display: grid;

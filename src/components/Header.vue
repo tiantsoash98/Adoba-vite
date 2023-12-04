@@ -1,10 +1,12 @@
 <script>
 import HeaderMenu from './HeaderMenu.vue'
+import Button from './Button.vue'
 import { ref, inject } from 'vue';
 
 export default {
     components: {
         HeaderMenu,
+        Button
     },
     data() {
         return {
@@ -104,7 +106,9 @@ export default {
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">
+                            <Button text="Contact" class="button--small button--white"></Button>
+                        </a></li>
                     </ul>
                 </nav>
             </div>
@@ -174,7 +178,7 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
     }
     &__link {
         display: flex;

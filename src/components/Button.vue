@@ -41,6 +41,8 @@ export default {
     align-items: flex-start;
     transition: color 0.3s var(--alias-default-ease);
     cursor: pointer; 
+    transition: color 0.6s var(--alias-default-ease),
+                background-color 0.6s var(--alias-default-ease) .1s; 
 
     &:hover {
         #{$root}__icon-wrapper {
@@ -48,8 +50,27 @@ export default {
         }
     }
 
+    &--small {
+        border: 1px solid var(--brand-primary);
+        padding: calc(0.3 * var(--r-base-unit)) calc(0.5 * var(--r-base-unit));
+
+        #{$root}__icon-wrapper {
+            display: none;
+        }
+
+        &:hover {
+            background-color: var(--brand-primary);
+            color: var(--brand-secondary);
+        }
+    }
+
     &--primary {
         background-color: var(--brand-primary);
+
+        &:hover {
+            background-color: var(--brand-secondary);
+            color: var(--brand-primary);
+        }
     }
     
     &--tertiary {
